@@ -1,0 +1,195 @@
+<app-navbar></app-navbar>
+<section class="analytics-dashboard">
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+    </div>
+
+    <div class="dashboard-header">
+        <div class="header-content">
+            <span class="badge">Private Dashboard</span>
+            <h1>Advanced Energy Analytics</h1>
+            <p>Real-time monitoring, carbon tracking, and environmental insights.</p>
+        </div>
+        
+        <div class="location-selector">
+            <div class="input-group">
+                <span class="icon">📍</span>
+                <input type="text" [(ngModel)]="selectedCity" (keyup.enter)="fetchAnalytics()" placeholder="Enter location...">
+                <button (click)="fetchAnalytics()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="state-container">
+        <div class="spinner"></div>
+        <p>Analyzing data for {{selectedCity}}...</p>
+    </div>
+
+    <div *ngIf="error" class="state-container error">
+        <p>{{error}}</p>
+    </div>
+
+    <div *ngIf="analyticsData && !loading" class="dashboard-grid">
+        <!-- Overview Cards -->
+        <div class="grid-col span-2">
+            <div class="panel score-panel">
+                <div class="panel-header">
+                    <h3>Overall Renewable Score</h3>
+                </div>
+                <div class="score-content">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle" [attr.stroke-dasharray]="analyticsData.analytics.renewableScore + ', 100'"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="score-value">{{analyticsData.analytics.renewableScore}}</div>
+                    </div>
+                    <div class="score-details">
+                        <div class="detail-item">
+                            <span class="label">Solar Potential</span>
+                            <span class="val highlight-yellow">{{analyticsData.analytics.solarPotential}}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Wind Potential</span>
+                            <span class="val highlight-blue">{{analyticsData.analytics.windPotential}}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Recommended</span>
+                            <span class="val highlight-green">{{analyticsData.analytics.recommendedSource}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-col span-1">
+            <div class="panel weather-panel">
+                <div class="panel-header">
+                    <h3>Current Conditions</h3>
+                </div>
+                <div class="weather-metrics">
+                    <div class="w-metric">
+                        <span class="icon">🌡️</span>
+                        <div>
+                            <div class="val">{{analyticsData.weather.temperature}}°C</div>
+                            <div class="lbl">Temperature</div>
+                        </div>
+                    </div>
+                    <div class="w-metric">
+                        <span class="icon">☁️</span>
+                        <div>
+                            <div class="val">{{analyticsData.weather.cloudCover}}%</div>
+                            <div class="lbl">Cloud Cover</div>
+                        </div>
+                    </div>
+                    <div class="w-metric">
+                        <span class="icon">💨</span>
+                        <div>
+                            <div class="val">{{analyticsData.weather.windSpeed}}m/s</div>
+                            <div class="lbl">Wind Speed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Monitor -->
+        <div class="grid-col span-3">
+            <div class="panel monitor-panel">
+                <div class="panel-header">
+                    <h3><span class="live-dot"></span> Live Grid Output Simulation</h3>
+                </div>
+                <div class="monitor-cards">
+                    <div class="m-card solar">
+                        <div class="m-icon">☀️</div>
+                        <div class="m-info">
+                            <h4>Solar Energy</h4>
+                            <div class="m-val">{{liveSolarOutput}} <span>MW</span></div>
+                        </div>
+                    </div>
+                    <div class="m-card wind">
+                        <div class="m-icon">🌬️</div>
+                        <div class="m-info">
+                            <h4>Wind Energy</h4>
+                            <div class="m-val">{{liveWindOutput}} <span>MW</span></div>
+                        </div>
+                    </div>
+                    <div class="m-card hydro">
+                        <div class="m-icon">💧</div>
+                        <div class="m-info">
+                            <h4>Hydro Energy</h4>
+                            <div class="m-val">{{liveHydroOutput}} <span>MW</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carbon Tracking -->
+        <div class="grid-col span-3">
+            <div class="panel carbon-panel">
+                <div class="carbon-content">
+                    <div class="c-icon">🌍</div>
+                    <div class="c-info">
+                        <h3>Carbon Emission Tracking</h3>
+                        <p>Estimated impact based on current renewable transition and grid performance.</p>
+                    </div>
+                    <div class="c-stats">
+                        <div class="c-stat">
+                            <div class="c-val">{{analyticsData.analytics.carbonReduction}} <span>Tons/Day</span></div>
+                            <div class="c-lbl">CO₂ Reduced</div>
+                        </div>
+                        <div class="c-stat">
+                            <div class="c-val">{{analyticsData.analytics.homesPowered}}</div>
+                            <div class="c-lbl">Homes Powered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- AI Forecast Panel -->
+        <div class="grid-col span-3">
+            <div class="panel ai-panel">
+                <div class="panel-header ai-header">
+                    <h3><span class="icon">🤖</span> AI Energy Forecast (24h)</h3>
+                    <span class="forecast-badge">Live Prediction</span>
+                </div>
+                <div class="ai-content">
+                    <p class="ai-summary">{{analyticsData.analytics.aiPrediction.forecastSummary}}</p>
+                    <div class="ai-metrics">
+                        <div class="ai-metric-card">
+                            <div class="ai-icon">☀️</div>
+                            <div class="ai-info">
+                                <h4>Solar Output</h4>
+                                <div class="ai-val" [class.positive]="analyticsData.analytics.aiPrediction.solarOutputChange.includes('+')" [class.negative]="analyticsData.analytics.aiPrediction.solarOutputChange.includes('-')">
+                                    {{analyticsData.analytics.aiPrediction.solarOutputChange}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-metric-card">
+                            <div class="ai-icon">🌬️</div>
+                            <div class="ai-info">
+                                <h4>Wind Efficiency</h4>
+                                <div class="ai-val" [class.positive]="analyticsData.analytics.aiPrediction.windEfficiencyChange.includes('+')" [class.negative]="analyticsData.analytics.aiPrediction.windEfficiencyChange.includes('-')">
+                                    {{analyticsData.analytics.aiPrediction.windEfficiencyChange}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-metric-card">
+                            <div class="ai-icon">⚡</div>
+                            <div class="ai-info">
+                                <h4>Grid Demand</h4>
+                                <div class="ai-val" [class.positive]="analyticsData.analytics.aiPrediction.gridDemandChange.includes('+')" [class.negative]="analyticsData.analytics.aiPrediction.gridDemandChange.includes('-')">
+                                    {{analyticsData.analytics.aiPrediction.gridDemandChange}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

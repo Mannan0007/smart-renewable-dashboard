@@ -1,0 +1,41 @@
+<section class="features-section">
+
+    <!-- HEADER -->
+    <div class="section-header">
+
+        <h2>
+            Platform Features
+        </h2>
+
+        <p>
+            Powerful tools designed for future renewable energy management systems.
+        </p>
+
+    </div>
+
+    <!-- FEATURES GRID -->
+    <div class="features-grid">
+
+        @for (feature of features; track feature.title) {
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    {{ feature.icon }}
+                </div>
+
+                <h3>
+                    {{ feature.title }}
+                </h3>
+
+                <p>
+                    {{ feature.description }}
+                </p>
+
+            </div>
+
+        }
+
+    </div>
+
+</section>

@@ -1,0 +1,57 @@
+<section class="smart-grid-section">
+
+    <!-- LEFT SIDE -->
+    <div class="grid-content">
+
+        <span class="tag">
+            Smart Grid Technology
+        </span>
+
+        <h2>
+            Intelligent Power Distribution For Future Energy Systems
+        </h2>
+
+        <p>
+            Monitor renewable energy flow, grid stability, and smart distribution
+            systems in real-time using advanced analytics and AI-powered monitoring.
+        </p>
+
+        <button>
+            Explore Grid
+        </button>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="grid-visual">
+
+        <div class="grid-container">
+
+            @for (stat of gridStats; track stat.title) {
+
+            <div class="grid-card">
+
+                <div class="grid-icon">
+                    {{ stat.icon }}
+                </div>
+
+                <h3>
+                    {{ stat.value }}
+                </h3>
+
+                <p>
+                    {{ stat.title }}
+                </p>
+
+            </div>
+
+            }
+
+            <!-- CENTER GLOW -->
+            <div class="center-glow"></div>
+
+        </div>
+
+    </div>
+
+</section>

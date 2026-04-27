@@ -1,0 +1,147 @@
+<app-navbar></app-navbar>
+<section class="search-page">
+
+    <!-- BACKGROUND GLOW -->
+    <div class="background-glow"></div>
+
+    <div class="search-container">
+
+        <!-- TITLE -->
+        <span class="tag">
+            Renewable Intelligence Search
+        </span>
+
+        <h1>
+            Search Renewable Analytics By City
+        </h1>
+
+        <p>
+            Discover renewable energy potential, climate insights,
+            sustainability scores, and environmental analytics
+            for cities around the world.
+        </p>
+
+        <!-- SEARCH BAR -->
+        <div class="search-box">
+
+            <input type="text" placeholder="Enter city name..." [(ngModel)]="city">
+
+            <button (click)="searchCity()">
+                Search
+            </button>
+
+        </div>
+
+        <!-- RECENT SEARCHES -->
+        <div class="recent-section">
+
+            <h3>
+                Popular Searches
+            </h3>
+
+            <div class="recent-list">
+
+                @for (item of recentSearches; track item) {
+
+                <button class="city-chip" (click)="searchCity(item)">
+
+                    {{ item }}
+
+                </button>
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RESULTS SECTION -->
+    <div class="results-container" *ngIf="loading || error || searchResults">
+        
+        <div *ngIf="loading" class="loading-state">
+            <div class="spinner"></div>
+            <p>Analyzing renewable potential for {{city}}...</p>
+        </div>
+
+        <div *ngIf="error" class="error-state">
+            <p class="error-message">{{error}}</p>
+        </div>
+
+        <div *ngIf="searchResults && !loading" class="results-content">
+            <h2>Analytics for {{city}}</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Temperature</h4>
+                    <div class="value">{{searchResults.weather.temperature}} °C</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Weather</h4>
+                    <div class="value">{{searchResults.weather.weather}}</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Cloud Cover</h4>
+                    <div class="value">{{searchResults.weather.cloudCover}} %</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Wind Speed</h4>
+                    <div class="value">{{searchResults.weather.windSpeed}} m/s</div>
+                </div>
+            </div>
+
+            <div class="score-section" *ngIf="searchResults.analytics">
+                <h3>Renewable Scores</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h4>Solar Potential</h4>
+                        <div class="value">{{searchResults.analytics.solarPotential}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Wind Potential</h4>
+                        <div class="value">{{searchResults.analytics.windPotential}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Overall Viability</h4>
+                        <div class="value">{{searchResults.analytics.renewableScore}}</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>ecoGrid recommendation</h4>
+                        <div class="value">{{searchResults.analytics.recommendedSource}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="live-monitor-section" *ngIf="searchResults.analytics">
+                <h3><span class="pulse-dot"></span> Real-Time Grid Monitor</h3>
+                <div class="live-grid">
+                    <div class="live-card">
+                        <div class="live-icon">☀️</div>
+                        <h4>Live Solar Output</h4>
+                        <div class="live-value">{{liveSolarOutput}} <span class="unit">kW</span></div>
+                    </div>
+                    <div class="live-card">
+                        <div class="live-icon">💨</div>
+                        <h4>Live Wind Output</h4>
+                        <div class="live-value">{{liveWindOutput}} <span class="unit">kW</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carbon-section" *ngIf="searchResults.analytics">
+                <h3>🌍 Carbon Tracking</h3>
+                <div class="carbon-card">
+                    <div class="carbon-icon">🌱</div>
+                    <div class="carbon-details">
+                        <h4>Estimated CO₂ Reduction</h4>
+                        <p class="carbon-value">{{searchResults.analytics.carbonReduction}} <span class="unit">kg / day</span></p>
+                        <p class="carbon-desc">By transitioning to the recommended <strong>{{searchResults.analytics.recommendedSource}}</strong> energy grid, this city can offset significant carbon emissions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

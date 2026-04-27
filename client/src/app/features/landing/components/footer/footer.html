@@ -1,0 +1,122 @@
+<footer class="footer">
+
+    <!-- TOP FOOTER -->
+    <div class="footer-top">
+
+        <!-- BRAND -->
+        <div class="footer-brand">
+
+            <div class="logo">
+
+                <span class="logo-icon">
+                    ⚡
+                </span>
+
+                <span class="logo-text">
+                    EcoGrid
+                </span>
+
+            </div>
+
+            <p>
+                Building intelligent renewable energy systems for a
+                sustainable and smarter future.
+            </p>
+
+            <div class="socials">
+
+                <div class="social-icon">🌐</div>
+
+                <div class="social-icon">📧</div>
+
+                <div class="social-icon">💼</div>
+
+            </div>
+
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div class="footer-links">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <ul>
+
+                @for (link of quickLinks; track link) {
+
+                <li>
+                    <a href="#">
+                        {{ link }}
+                    </a>
+                </li>
+
+                }
+
+            </ul>
+
+        </div>
+
+        <!-- RESOURCES -->
+        <div class="footer-links">
+
+            <h3>
+                Resources
+            </h3>
+
+            <ul>
+
+                @for (item of resources; track item) {
+
+                <li>
+                    <a href="#">
+                        {{ item }}
+                    </a>
+                </li>
+
+                }
+
+            </ul>
+
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="newsletter">
+
+            <h3>
+                Stay Updated
+            </h3>
+
+            <p>
+                Get renewable energy insights and platform updates.
+            </p>
+
+            <div class="newsletter-input">
+
+                <input type="email" placeholder="Enter your email">
+
+                <button>
+                    Subscribe
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BOTTOM FOOTER -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 EcoGrid. All rights reserved.
+        </p>
+
+        <span>
+            Renewable Intelligence Platform
+        </span>
+
+    </div>
+
+</footer>

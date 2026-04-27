@@ -1,0 +1,29 @@
+<nav class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <span class="logo-icon">⚡</span>
+    <span class="logo-text">EcoGrid</span>
+  </div>
+
+  <!-- NAV LINKS -->
+  <ul class="nav-links">
+    <li><a routerLink="/dashboard">Dashboard</a></li>
+    <li><a routerLink="/search">City Search</a></li>
+    <li><a routerLink="/about-us">About</a></li>
+    @if (isAuthenticated()) {
+      <li><a routerLink="/analytics">Analytics</a></li>
+    }
+  </ul>
+
+  @if (!isAuthenticated()) {
+    <button class="nav-btn">
+      <a routerLink="/login" class="cstm">Login</a>
+    </button>
+  } @else {
+    <button class="nav-btn">
+      <a (click)="logout()" class="cstm">Logout</a>
+    </button>
+  }
+
+</nav>

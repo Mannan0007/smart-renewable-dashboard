@@ -1,0 +1,54 @@
+<section class="carbon-section">
+
+    <!-- BACKGROUND GLOW -->
+    <div class="background-glow"></div>
+
+    <!-- LEFT CONTENT -->
+    <div class="carbon-content">
+
+        <span class="tag">
+            Sustainability Impact
+        </span>
+
+        <h2>
+            Reducing Carbon Emissions Through Smart Renewable Energy
+        </h2>
+
+        <p>
+            Monitor sustainability metrics, carbon reduction impact,
+            and renewable energy contribution using intelligent
+            environmental analytics.
+        </p>
+
+        <button>
+            View Sustainability Report
+        </button>
+
+    </div>
+
+    <!-- RIGHT STATS -->
+    <div class="carbon-stats">
+
+        @for (stat of carbonStats; track stat.label) {
+
+        <div class="carbon-card">
+
+            <div class="carbon-icon">
+                {{ stat.icon }}
+            </div>
+
+            <h3>
+                {{ stat.value }}
+            </h3>
+
+            <p>
+                {{ stat.label }}
+            </p>
+
+        </div>
+
+        }
+
+    </div>
+
+</section>

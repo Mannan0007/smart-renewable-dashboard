@@ -1,0 +1,194 @@
+.auth-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 2rem;
+
+    background:
+        linear-gradient(rgba(7, 16, 31, 0.92),
+            rgba(7, 16, 31, 0.96)),
+        url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=2070');
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+.auth-card {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    padding: 3rem;
+
+    border-radius: 28px;
+
+    background: rgba(15, 23, 42, 0.86);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(14px);
+
+    color: white;
+
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.08);
+}
+
+/* HEADER */
+
+.auth-header {
+
+    text-align: center;
+
+    margin-bottom: 2.5rem;
+}
+
+.tag {
+
+    display: inline-block;
+
+    padding: 0.6rem 1.2rem;
+
+    border-radius: 30px;
+
+    background: rgba(34, 197, 94, 0.12);
+
+    color: #22c55e;
+
+    border: 1px solid rgba(34, 197, 94, 0.2);
+
+    margin-bottom: 1rem;
+}
+
+.auth-header h1 {
+
+    font-size: 2.5rem;
+
+    margin-bottom: 1rem;
+}
+
+.auth-header p {
+
+    color: #94a3b8;
+
+    line-height: 1.8;
+}
+
+/* FORM */
+
+.auth-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.5rem;
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.7rem;
+}
+
+.form-group label {
+
+    font-size: 0.95rem;
+
+    color: #cbd5e1;
+}
+
+.form-group input {
+
+    padding: 1rem 1.2rem;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: white;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+
+    border-color: #38bdf8;
+}
+
+.form-group input::placeholder {
+
+    color: #64748b;
+}
+
+/* BUTTON */
+
+.auth-form button {
+
+    margin-top: 1rem;
+
+    padding: 1rem;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(135deg,
+            #22c55e,
+            #38bdf8);
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.auth-form button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+/* FOOTER */
+
+.auth-footer {
+
+    margin-top: 2rem;
+
+    text-align: center;
+}
+
+.auth-footer p {
+
+    color: #94a3b8;
+}
+
+.auth-footer a {
+
+    color: #38bdf8;
+
+    text-decoration: none;
+}

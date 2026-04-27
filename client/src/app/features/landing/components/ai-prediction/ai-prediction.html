@@ -1,0 +1,108 @@
+<section class="ai-section">
+
+    <!-- LEFT SIDE -->
+    <div class="ai-visual">
+
+        <div class="chart-card">
+
+            <div class="chart-header">
+
+                <h3>
+                    AI Energy Forecast
+                </h3>
+
+                <span>
+                    Live Prediction
+                </span>
+
+            </div>
+
+            <!-- MOCK CHART -->
+            <div class="chart">
+
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+
+            </div>
+
+            <!-- STATS -->
+            <div class="chart-stats">
+
+                <div class="stat">
+                    <h4>92%</h4>
+                    <p>Accuracy</p>
+                </div>
+
+                <div class="stat">
+                    <h4>24h</h4>
+                    <p>Forecast Range</p>
+                </div>
+
+                <div class="stat">
+                    <h4>AI</h4>
+                    <p>Powered</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="ai-content">
+
+        <span class="tag">
+            AI Prediction System
+        </span>
+
+        <h2>
+            Intelligent Forecasting For Renewable Energy Optimization
+        </h2>
+
+        <p>
+            Our AI-driven prediction engine analyzes weather patterns,
+            energy demand, and renewable generation trends to optimize
+            smart-grid performance and sustainability.
+        </p>
+
+        <div class="prediction-list">
+
+            @for (item of predictions; track item.title) {
+
+            <div class="prediction-card">
+
+                <div class="prediction-icon">
+                    {{ item.icon }}
+                </div>
+
+                <div class="prediction-info">
+
+                    <div class="top-row">
+
+                        <h3>
+                            {{ item.title }}
+                        </h3>
+
+                        <span>
+                            {{ item.value }}
+                        </span>
+
+                    </div>
+
+                    <p>
+                        {{ item.description }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</section>

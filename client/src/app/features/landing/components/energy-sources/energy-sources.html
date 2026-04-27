@@ -1,0 +1,119 @@
+<section class="energy-section">
+
+    <!-- HEADER -->
+    <div class="section-header">
+
+        <h2>
+            Renewable Energy Sources
+        </h2>
+
+        <p>
+            Explore sustainable energy technologies powering the future smart grid.
+        </p>
+
+    </div>
+
+    <!-- CARDS -->
+    <div class="energy-grid">
+
+        @for (source of energySources; track source.name) {
+
+        <div class="energy-card">
+
+            <img [src]="source.image" [alt]="source.name">
+
+            <div class="card-content">
+
+                <h3>
+                    {{ source.name }}
+                </h3>
+
+                <div class="efficiency">
+
+                    Global Contribution:
+                    <span>{{ source.GlobalContribution }}</span>
+
+                </div>
+
+                <p>
+
+                    {{ source.shortDescription }}
+
+                </p>
+
+                <button (click)="openDetails(source)">
+
+                    Learn More
+
+                </button>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+    <!-- POPUP -->
+
+    @if (selectedSource) {
+
+    <div class="popup-overlay">
+
+        <div class="popup-card">
+
+            <button class="close-btn" (click)="closePopup()">
+                ✕
+            </button>
+
+            <img [src]="selectedSource.image" [alt]="selectedSource.name">
+
+            <h2>
+
+                {{ selectedSource.name }}
+
+            </h2>
+
+            <div class="popup-efficiency">
+
+                Efficiency:
+                <span>{{ selectedSource.efficiency }}</span>
+
+            </div>
+
+            <p class="popup-description">
+
+                {{ selectedSource.fullDescription }}
+
+            </p>
+
+            <div class="benefits">
+
+                <h4>
+                    Key Benefits
+                </h4>
+
+                <ul>
+
+                    @for (benefit of selectedSource.benefits; track benefit) {
+
+                    <li>
+
+                        {{ benefit }}
+
+                    </li>
+
+                    }
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    }
+
+</section>
