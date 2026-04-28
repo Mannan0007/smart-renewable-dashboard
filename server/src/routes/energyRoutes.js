@@ -10,11 +10,11 @@ const {
 
 } = require('../controllers/energyController');
 
-/* WEATHER */
+// For live weather
 
 router.get('/weather', fetchWeather);
 
-/* RENEWABLE ANALYTICS */
+// For Live renewable score
 
 router.get('/renewable-score', fetchRenewableAnalytics);
 

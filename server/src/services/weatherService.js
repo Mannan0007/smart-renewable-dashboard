@@ -4,7 +4,6 @@ const getWeatherData = async (city = 'San Francisco') => {
 
     try {
 
-        // 1. Geocode the city using Nominatim
         const geoResponse = await axios.get(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`, {
             headers: {
                 'User-Agent': 'SmartRenewableDashboard/1.0'
@@ -18,7 +17,6 @@ const getWeatherData = async (city = 'San Francisco') => {
             lat = geoResponse.data[0].lat;
             lon = geoResponse.data[0].lon;
         }
-
         const options = {
 
             method: 'GET',

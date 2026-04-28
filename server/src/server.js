@@ -6,11 +6,9 @@ const connectDB = require('./config/db');
 
 const PORT = process.env.PORT || 5000;
 
-/* DATABASE CONNECTION */
 
 connectDB();
 
-/* START SERVER */
 
 app.listen(PORT, () => {
 

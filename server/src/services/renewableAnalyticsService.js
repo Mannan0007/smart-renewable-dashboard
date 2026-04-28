@@ -14,8 +14,6 @@ const calculateRenewableAnalytics = (weatherData) => {
 
     } = weatherData;
 
-    /* SOLAR POTENTIAL */
-
     let solarPotential = '';
 
     if (cloudCover <= 30 && precipitation === 0) {
@@ -30,8 +28,6 @@ const calculateRenewableAnalytics = (weatherData) => {
 
         solarPotential = 'Low';
     }
-
-    /* WIND POTENTIAL */
 
     let windPotential = '';
 
@@ -48,11 +44,9 @@ const calculateRenewableAnalytics = (weatherData) => {
         windPotential = 'Low';
     }
 
-    /* RENEWABLE SCORE */
 
     let score = 50;
 
-    /* SOLAR IMPACT */
 
     if (solarPotential === 'High') {
 
@@ -67,7 +61,6 @@ const calculateRenewableAnalytics = (weatherData) => {
         score += 5;
     }
 
-    /* WIND IMPACT */
 
     if (windPotential === 'High') {
 
@@ -82,21 +75,18 @@ const calculateRenewableAnalytics = (weatherData) => {
         score += 5;
     }
 
-    /* HUMIDITY IMPACT */
 
     if (humidity > 85) {
 
         score -= 5;
     }
 
-    /* LIMIT SCORE */
 
     if (score > 100) {
 
         score = 100;
     }
 
-    /* BEST SOURCE */
 
     let recommendedSource = '';
 
@@ -113,7 +103,6 @@ const calculateRenewableAnalytics = (weatherData) => {
         recommendedSource = 'Hybrid';
     }
 
-    /* ENVIRONMENT STATUS */
 
     let environmentStatus = '';
 
@@ -130,7 +119,6 @@ const calculateRenewableAnalytics = (weatherData) => {
         environmentStatus = 'Moderate';
     }
 
-    /* AI FORECAST SIMULATION */
 
     const aiPrediction = {
 

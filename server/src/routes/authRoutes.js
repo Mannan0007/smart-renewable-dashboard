@@ -14,15 +14,13 @@ const {
 
 const protect = require('../middleware/authMiddleware');
 
-/* REGISTER */
+//For Register and Login
 
 router.post('/register', registerUser);
 
-/* LOGIN */
 
 router.post('/login', loginUser);
 
-/* PROFILE */
 
 router.get('/profile', protect, getUserProfile);
 
