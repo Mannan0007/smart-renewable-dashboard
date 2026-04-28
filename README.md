@@ -1,4 +1,9 @@
-# Smart Renewable Dashboard
+# A Comprehensive Review of Sustainable and Renewable Energy Sources for Future Power Systems
+
+Mannan Puri : 2210991886 
+Ayush Rana : 2210991429
+Muskan : 2210990591
+Research Paper
 
 A full-stack web application designed to track, analyze, and predict renewable energy data. This project integrates a frontend Angular application with a backend Node.js/Express API and a MongoDB database. It includes features for monitoring energy sources (solar, wind, grid), an AI prediction module for energy forecasting, and tracking carbon emissions.
 
